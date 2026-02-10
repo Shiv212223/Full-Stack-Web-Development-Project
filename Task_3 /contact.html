@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Contact | MainCrafts Technology</title>
+
+  <!-- Google Font -->
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Poppins', sans-serif;
+    }
+
+    body {
+      min-height: 100vh;
+      background: linear-gradient(120deg, #14b8a6, #6366f1);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .contact-box {
+      background: #ffffff;
+      width: 100%;
+      max-width: 420px;
+      padding: 2.8rem;
+      border-radius: 20px;
+      box-shadow: 0 30px 60px rgba(0,0,0,0.25);
+    }
+
+    .contact-box h2 {
+      text-align: center;
+      margin-bottom: 1.8rem;
+      font-weight: 600;
+      color: #1f2937;
+    }
+
+    label {
+      font-size: 0.9rem;
+      color: #374151;
+      display: block;
+      margin-bottom: 6px;
+    }
+
+    input, textarea {
+      width: 100%;
+      padding: 12px 14px;
+      margin-bottom: 16px;
+      border-radius: 10px;
+      border: 1px solid #d1d5db;
+      font-size: 0.95rem;
+      transition: 0.3s;
+    }
+
+    input:focus, textarea:focus {
+      outline: none;
+      border-color: #6366f1;
+      box-shadow: 0 0 0 3px rgba(99,102,241,0.2);
+    }
+
+    button {
+      width: 100%;
+      padding: 14px;
+      border: none;
+      border-radius: 30px;
+      font-size: 1rem;
+      font-weight: 600;
+      background: linear-gradient(120deg, #14b8a6, #6366f1);
+      color: white;
+      cursor: pointer;
+      transition: 0.3s;
+    }
+
+    button:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 12px 25px rgba(99,102,241,0.4);
+    }
+  </style>
+</head>
+
+<body>
+
+  <div class="contact-box">
+    <h2>Contact MainCrafts</h2>
+
+    <form onsubmit="return submitForm()">
+      <label for="name">Name</label>
+      <input type="text" id="name" placeholder="Enter your name">
+
+      <label for="email">Email</label>
+      <input type="email" id="email" placeholder="Enter your email">
+
+      <label for="message">Message</label>
+      <textarea id="message" rows="4" placeholder="Enter your message"></textarea>
+
+      <button type="submit">Submit</button>
+      <p style="text-align:center; margin-top:15px;">
+  <a href="submissions.html">View Submissions</a>
+</p>
+
+    </form>
+  </div>
+
+<script>
+  function submitForm() {
+    let name = document.getElementById("name").value.trim();
+    let email = document.getElementById("email").value.trim();
+    let message = document.getElementById("message").value.trim();
+
+    if (name === "" || email === "" || message === "") {
+      alert("❌ Please fill all fields");
+      return false;
+    }
+
+    // 🔹 Create object
+    let submission = {
+      name: name,
+      email: email,
+      message: message
+    };
+
+    // 🔹 Get existing submissions or empty array
+    let submissions = JSON.parse(localStorage.getItem("submissions")) || [];
+
+    // 🔹 Add new submission
+    submissions.push(submission);
+
+    // 🔹 Save back to LocalStorage
+    localStorage.setItem("submissions", JSON.stringify(submissions));
+
+    alert("✅ Submitted & Saved Successfully!");
+
+    // Clear form
+    document.getElementById("name").value = "";
+    document.getElementById("email").value = "";
+    document.getElementById("message").value = "";
+
+    return false; // prevent page refresh
+  }
+</script>
+
+
+</body>
+</html>
