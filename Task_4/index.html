@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Task Manager Dashboard</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<div class="container">
+    <h1>Task Manager Dashboard</h1>
+
+    <!-- Search -->
+    <input type="text" id="search" placeholder="Search tasks...">
+
+    <!-- Task Form -->
+    <form id="taskForm">
+        <input type="text" id="title" placeholder="Task Title" required>
+        <input type="text" id="description" placeholder="Description" required>
+        <input type="date" id="date" required>
+        <button type="submit">Add Task</button>
+    </form>
+
+    <!-- Task List -->
+    <table>
+        <thead>
+            <tr>
+                <th>Title</th>
+                <th>Description</th>
+                <th>Date</th>
+                <th>Status</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody id="taskList"></tbody>
+    </table>
+</div>
+
+<script src="script.js"></script>
+</body>
+</html>
